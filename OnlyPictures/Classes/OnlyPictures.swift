@@ -139,7 +139,7 @@ public class OnlyPictures: UIView {
         }
     }
     
-    
+    public var addCornerRadius: CGFloat = 5.0
     
     
     // Order -----------------------------------------------------------
@@ -454,7 +454,7 @@ internal extension OnlyPictures {
         self.stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
         self.stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
         self.stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-        self.stackView.backgroundColor = UIColor.brown
+        self.stackView.backgroundColor = UIColor.clear
     }
     
     func setStackViewOfImageViews() {
@@ -488,7 +488,7 @@ internal extension OnlyPictures {
         
         imageview.heightAnchor.constraint(equalToConstant: SIZE_OF_IMAGEVIEWS).isActive = true
         imageview.widthAnchor.constraint(equalToConstant: SIZE_OF_IMAGEVIEWS).isActive = true
-        imageview.makeBorderWithCornerRadius(radius: SIZE_OF_IMAGEVIEWS/2, borderColor: self.spacingColor, borderWidth: CGFloat(CGFloat(IMAGEVIEW_BORDERWIDTH)))
+        imageview.makeBorderWithCornerRadius(radius: addCornerRadius, borderColor: self.spacingColor, borderWidth: CGFloat(CGFloat(IMAGEVIEW_BORDERWIDTH)))
         imageview.isUserInteractionEnabled = true
         if let defaultPictureConfirmed = self.defaultPicture {
             imageview.image = defaultPictureConfirmed
@@ -503,7 +503,7 @@ internal extension OnlyPictures {
         return imageview
     }
     
-    internal func setBorderImageViewPath(_ view: UIView) {
+    func setBorderImageViewPath(_ view: UIView) {
         
         let layerMask = CAShapeLayer()
         let bezierPath = UIBezierPath.init(arcCenter: CGPoint(x: SIZE_OF_IMAGEVIEWS/2, y: SIZE_OF_IMAGEVIEWS/2), radius: (SIZE_OF_IMAGEVIEWS/2) - 0.5, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: false)
@@ -511,7 +511,7 @@ internal extension OnlyPictures {
         view.layer.mask = layerMask
     }
     
-    internal func setBorderRemainingCountPath(_ view: UIView) {
+    func setBorderRemainingCountPath(_ view: UIView) {
         
         let layerMask = CAShapeLayer()
         //let bezierPath = UIBezierPath.init(arcCenter: CGPoint(x: SIZE_OF_IMAGEVIEWS/2, y: SIZE_OF_IMAGEVIEWS/2), radius: (SIZE_OF_IMAGEVIEWS/2) - 0.5, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: false)
